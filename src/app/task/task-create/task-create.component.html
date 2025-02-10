@@ -1,0 +1,13 @@
+<!-- <p>task-create works!</p> -->
+
+
+<form [formGroup]="createTaskGroup" (ngSubmit)="onSubmit()">
+    <label for="taskname">Task name: </label>
+    <input type="text" formControlName="taskName" required>
+    <br><label for="taskstatus">Task Status: </label>
+    <input type="text" formControlName="taskStatus" required>
+    <br><label for="taskpriority">Task Priority: </label>
+    <input type="text" formControlName="taskPriority" required>
+
+    <br><button type="submit">Create</button>
+</form>

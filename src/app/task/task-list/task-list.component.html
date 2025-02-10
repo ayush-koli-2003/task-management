@@ -1,0 +1,41 @@
+<!-- <p>task-list works!</p> -->
+<!-- <app-task-demo></app-task-demo><br> -->
+
+<!-- <app-shared-button></app-shared-button> -->
+<button (click)="createTrigger()">Create Task</button>
+
+
+
+
+<app-task-create *ngIf="isVisible" (emitter)="createTrigger()"></app-task-create>
+
+<br><h1 style="margin-top: 50px;">Task List:</h1>
+<!-- <ol >
+    
+    <div *ngFor="let task of taskList">
+        <li>Task Name: {{task.name}} Task Status: {{task.status}}<button style="margin-left: 5px;" (click)="updateTrigger()">Update status</button> <br><app-task-update style="margin-left: 5px;" [taskObj] = "task" (emitter)="updateStatus($event)" *ngIf="isUpdateVisible"></app-task-update></li>
+    </div>
+    
+</ol> -->
+
+<table>
+    <tr>
+        <th>Task name</th>
+        <th>Task Status</th>
+        <th>Task Priority</th>
+        <th>Action</th>
+    </tr>
+    <!-- <tr *ngFor="let task of taskList">
+            <td>{{task.name}}</td> 
+            <td> {{task.status}} </td> 
+            <td><button style="margin-left: 5px;" (click)="updateTrigger()">Update status</button> <br><app-task-update style="margin-left: 5px;" [taskObj] = "task" (emitter)="updateStatus($event)" *ngIf="isUpdateVisible"></app-task-update></td>
+    </tr> -->
+    <ng-container *ngFor="let task of taskList">
+            <tr>
+                <td>{{task.name}}</td> 
+                <td> {{task.status}} </td> 
+                <td>{{task.priority}}</td>
+                <td><button style="margin-left: 5px;" (click)="updateTrigger(task.id)">Update status</button> <br><app-task-update style="margin-left: 5px;" [taskObj] = "task" (emitter)="updateStatus($event)" *ngIf="task.id === triggeredId"></app-task-update></td>
+            </tr>
+    </ng-container>
+</table>
